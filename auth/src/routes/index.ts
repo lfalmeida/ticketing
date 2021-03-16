@@ -1,4 +1,5 @@
 import express from 'express';
+import 'express-async-errors';
 
 import { NotFoundError } from '../errors/notFoundError';
 import { currentUserRouter } from './currentUser';
@@ -18,7 +19,7 @@ const loadRoutes = (app: express.Application) => {
     app.use(route);
   });
 
-  app.all('*', () => {
+  app.all('*', async () => {
     throw new NotFoundError();
   })
 };
