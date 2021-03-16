@@ -11,6 +11,6 @@ export class UserService {
     }
     const user = User.build(attrs);
     await user.save();
-    return User.build(attrs);
+    return user;
   }
 }
