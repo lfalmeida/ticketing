@@ -16,6 +16,9 @@ loadRoutes(app);
 app.use(errorHandler);
 
 const start = async () => {
+  if (!process.env.JWT_KEY) {
+    throw new Error('JWT_KEY must be defined')
+  }
   await databaseConnection();
 
   app.listen(3000, () => {
