@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { DatabaseConnectionError } from '../errors/databaseConnectionError';
 
 export const databaseConnection = async () => {
   try {
@@ -10,5 +11,6 @@ export const databaseConnection = async () => {
     console.log('connected to database');
   } catch (err) {
     console.error(err);
+    throw new DatabaseConnectionError();
   }
 }

@@ -3,18 +3,22 @@ import { validationResult } from 'express-validator';
 
 import validationRules from './validation';
 import { RequestValidationError } from '../../errors/requestValidationError';
-import { DatabaseConnectionError } from '../../errors/databaseConnectionError';
+import { UserService } from '../../services/userService';
 
 const router = express.Router();
 
-router.post('/api/users/signup', validationRules, (req: Request, res: Response) => {
+router.post('/api/users/signup', validationRules, async (req: Request, res: Response) => {
   const errors = validationResult(req);
+
   if (!errors.isEmpty()) {
     throw new RequestValidationError(errors.array());
   }
-  console.log('Creating a user...');
-  throw new DatabaseConnectionError();
-  res.send({});
+
+  const { email, password } = req.body;
+  const userService = new UserService();
+  const user = await userService.create({ email, password });
+
+  res.status(201).send(user);
 });
 
 export { router as signupRouter }
