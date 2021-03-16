@@ -30,9 +30,14 @@ router.post('/api/users/signup', validationRules, async (req: Request, res: Resp
     jwt: userJwt
   }
 
-  // Assing to user response
+  const response = {
+    user: {
+      id: user.id, email: user.email
+    },
+    token: userJwt
+  }
 
-  res.status(201).send({ user, token: userJwt });
+  res.status(201).send(response);
 });
 
 export { router as signupRouter }
