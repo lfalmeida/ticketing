@@ -1,20 +1,13 @@
 import express, { Request, Response } from 'express';
-import { validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
 
+import { validateRequest } from '../../middleware/validateRequest';
 import validationRules from './validation';
-import { RequestValidationError } from '../../errors/requestValidationError';
 import { UserService } from '../../services/userService';
 
 const router = express.Router();
 
-router.post('/api/users/signup', validationRules, async (req: Request, res: Response) => {
-  const errors = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    throw new RequestValidationError(errors.array());
-  }
-
+router.post('/api/users/signup', validationRules, validateRequest, async (req: Request, res: Response) => {
   const { email, password } = req.body;
   const userService = new UserService();
   const user = await userService.create({ email, password });
