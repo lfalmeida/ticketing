@@ -6,7 +6,7 @@ import validationRules from './validation';
 const router = express.Router();
 
 router.post('/api/users/signin', validationRules, validateRequest, (req: Request, res: Response) => {
-  res.send('hello');
+  const { email, password } = req.body;
 });
 
 export { router as signinRouter }
