@@ -1,5 +1,4 @@
 import express, { Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
 
 import { validateRequest } from '../../middleware/validateRequest';
 import validationRules from './validation';
@@ -10,8 +9,7 @@ const router = express.Router();
 
 router.post('/api/users/signup', validationRules, validateRequest, async (req: Request, res: Response) => {
   const { email, password } = req.body;
-  const userService = new UserService();
-  const user = await userService.create({ email, password });
+  const user = await UserService.create({ email, password });
   const token = TokenService.generate(user);
   // Store the token on session object (cookie)
   req.session = { token };
