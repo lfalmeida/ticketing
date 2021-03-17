@@ -28,16 +28,8 @@ router.post('/api/users/signup', validationRules, async (req: Request, res: Resp
   // Store it on session object
   req.session = {
     jwt: userJwt
-  }
-
-  const response = {
-    user: {
-      id: user.id, email: user.email
-    },
-    token: userJwt
-  }
-
-  res.status(201).send(response);
+  };
+  res.status(201).send({ token: userJwt, user });
 });
 
 export { router as signupRouter }
