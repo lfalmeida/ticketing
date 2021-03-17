@@ -1,9 +1,11 @@
 import express from 'express';
+import { checkToken } from '../../middleware/checkToken';
 
 const router = express.Router();
 
-router.get('/api/users/current', (req, res) => {
-  return res.send({ message: 'hello' });
+router.get('/api/users/current', checkToken, (req, res) => {
+  const { currentUser } = req;
+  return res.send({ currentUser });
 });
 
 export { router as currentUserRouter }

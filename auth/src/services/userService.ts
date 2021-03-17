@@ -29,4 +29,8 @@ export class UserService {
     return existingUser;
   }
 
+  static async findById(id: string) {
+    return await User.findOne({ _id: id });
+  }
+
 }

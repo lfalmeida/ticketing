@@ -7,6 +7,8 @@ export interface UserAttrs {
   password: string;
 }
 
+export interface UserPayload extends UserAttrs { }
+
 // An interface that describes the properties 
 // that a User Document has
 export interface UserDoc extends mongoose.Document {

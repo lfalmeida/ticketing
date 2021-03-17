@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { UserDoc } from '../interfaces/user';
+import { BadRequestError } from '../errors/badRequestError';
+import { UserDoc, UserPayload } from '../interfaces/user';
 
 export class TokenService {
   static generate(user: UserDoc) {
@@ -7,5 +8,13 @@ export class TokenService {
       id: user.id,
       email: user.email
     }, process.env.JWT_KEY!);
+  }
+
+  static verify(token: string) {
+    try {
+      return jwt.verify(token, process.env.JWT_KEY!) as UserPayload;
+    } catch (error) {
+      throw new BadRequestError('Token invalid');
+    }
   }
 }
