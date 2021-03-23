@@ -1,19 +1,5 @@
-import express from 'express';
-import { json } from 'body-parser';
 import { databaseConnection } from './database/connection';
-import cookieSession from 'cookie-session';
-
-import { errorHandler } from './middleware/errorHandler';
-import loadRoutes from './routes/index';
-
-const app = express();
-app.set('trust proxy', true);
-app.use(json());
-app.use(cookieSession({ signed: false, secure: true }));
-
-loadRoutes(app);
-
-app.use(errorHandler);
+import { app } from './app';
 
 const start = async () => {
   if (!process.env.JWT_KEY) {
