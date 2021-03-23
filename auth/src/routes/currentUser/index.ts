@@ -4,7 +4,7 @@ import { checkToken } from '../../middleware/checkToken';
 const router = express.Router();
 
 router.get('/api/users/current', checkToken, (req, res) => {
-  const { currentUser } = req;
+  const { currentUser = null } = req;
   return res.send({ currentUser });
 });
 

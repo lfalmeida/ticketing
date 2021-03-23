@@ -4,6 +4,9 @@ import { BadRequestError } from '../errors/badRequestError';
 import { UserPayload } from '../interfaces/user';
 import { TokenService } from '../services/tokenService';
 
+/**
+ * Define currentUser proterty into Express Request interface
+ */
 declare global {
   namespace Express {
     interface Request {
