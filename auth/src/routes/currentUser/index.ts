@@ -1,9 +1,9 @@
 import express from 'express';
-import { checkToken } from '../../middleware/checkToken';
+import { requireAuth } from '../../middleware/requireAuth';
 
 const router = express.Router();
 
-router.get('/api/users/current', checkToken, (req, res) => {
+router.get('/api/users/current', requireAuth, (req, res) => {
   const { currentUser = null } = req;
   return res.send({ currentUser });
 });

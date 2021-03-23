@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { BadRequestError } from '../errors/badRequestError';
+import { NotAuthorizedError } from '../errors/notAuthorizedError';
 import { UserPayload } from '../interfaces/user';
 import { TokenService } from '../services/tokenService';
 
@@ -15,7 +15,7 @@ declare global {
   }
 }
 
-export const checkToken = (
+export const requireAuth = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -38,5 +38,5 @@ export const checkToken = (
     return next();
   }
 
-  throw new BadRequestError('Token not povided.');
+  throw new NotAuthorizedError('Token not povided.');
 }
