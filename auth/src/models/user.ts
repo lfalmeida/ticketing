@@ -26,7 +26,6 @@ const userSchema = new mongoose.Schema({
 // using "function" keyword maintain the "this" keyword
 // attached to the document context, instead of the entire file
 userSchema.pre('save', async function (done) {
-  console.log('save');
   if (this.isModified('password')) {
     const hashed = await PasswordService.toHash(this.get('password'));
     this.set('password', hashed);
