@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { DatabaseConnectionError } from '../errors/databaseConnectionError';
+import { DatabaseConnectionError } from '@blackcoffee/common';
 
 export const databaseConnection = async () => {
   try {

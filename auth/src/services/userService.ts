@@ -1,4 +1,4 @@
-import { BadRequestError } from '../errors/badRequestError';
+import { BadRequestError } from '@blackcoffee/common';
 import { UserAttrs } from '../interfaces/user';
 import { User } from '../models/user';
 import { PasswordService } from './passwordService';

@@ -1,7 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 
-import { NotFoundError } from '../errors/notFoundError';
+import { NotFoundError } from '@blackcoffee/common';
 import { currentUserRouter } from './currentUser';
 import { signinRouter } from './signIn';
 import { signoutRouter } from './signOut'

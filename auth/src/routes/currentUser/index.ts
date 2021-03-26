@@ -1,5 +1,5 @@
 import express from 'express';
-import { requireAuth } from '../../middleware/requireAuth';
+import { requireAuth } from '@blackcoffee/common';
 
 const router = express.Router();
 

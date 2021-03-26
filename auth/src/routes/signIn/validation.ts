@@ -1,6 +1,5 @@
 import { body } from 'express-validator';
 
-
 const validationRules = [
   body('email')
     .isEmail()

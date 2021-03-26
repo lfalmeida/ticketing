@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { BadRequestError } from '../errors/badRequestError';
+import { BadRequestError } from '@blackcoffee/common';
 import { UserDoc, UserPayload } from '../interfaces/user';
 
 export class TokenService {

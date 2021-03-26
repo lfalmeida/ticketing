@@ -2,7 +2,7 @@ import express from 'express';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 
-import { errorHandler } from './middleware/errorHandler';
+import { errorHandler } from '@blackcoffee/common';
 import loadRoutes from './routes/index';
 
 const app = express();

@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 
-import { validateRequest } from '../../middleware/validateRequest';
+import { validateRequest } from '@blackcoffee/common';
 import { TokenService } from '../../services/tokenService';
 import { UserService } from '../../services/userService';
 import validationRules from './validation';
