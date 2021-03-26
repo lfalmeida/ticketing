@@ -9,9 +9,9 @@ const supportedRoutes = [
 ];
 
 const loadRoutes = (app: express.Application) => {
-  supportedRoutes.map(route => {
-    app.use(route);
-  });
+  // supportedRoutes.map(route => {
+  //   app.use(route);
+  // });
 
   app.all('*', async () => {
     throw new NotFoundError();
