@@ -15,8 +15,8 @@ router.post('/api/tickets', requireAuth, validationRules, validateRequest, async
     userId
   });
 
-  res.status(201).send(ticket);
+  return res.status(201).send(ticket);
 });
 
-export { router as createTicketRouter }
+export { router as createTicketRouter };
 

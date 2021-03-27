@@ -11,4 +11,8 @@ export default class TicketService {
   static async getAll() {
     return await Ticket.find();
   }
+
+  static async findById(ticketId: string) {
+    return await Ticket.findById(ticketId);
+  }
 }

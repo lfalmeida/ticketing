@@ -3,9 +3,13 @@ import 'express-async-errors';
 
 import { NotFoundError } from '@blackcoffee/common';
 import { createTicketRouter } from './createTicket';
+import { showTicketRouter } from './showTicket';
+import { listTicketsRouter } from './listTickets';
 
 const supportedRoutes = [
-  createTicketRouter
+  createTicketRouter,
+  showTicketRouter,
+  listTicketsRouter
 ];
 
 const loadRoutes = (app: express.Application) => {
