@@ -5,11 +5,13 @@ import { NotFoundError } from '@blackcoffee/common';
 import { createTicketRouter } from './createTicket';
 import { showTicketRouter } from './showTicket';
 import { listTicketsRouter } from './listTickets';
+import { updateTicketRouter } from './updateTicket';
 
 const supportedRoutes = [
   createTicketRouter,
   showTicketRouter,
-  listTicketsRouter
+  listTicketsRouter,
+  updateTicketRouter
 ];
 
 const loadRoutes = (app: express.Application) => {

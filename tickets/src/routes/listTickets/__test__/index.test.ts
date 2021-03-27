@@ -1,7 +1,6 @@
 import request from 'supertest';
 import { app } from '../../../app';
 
-
 const createTicket = () => {
   const cookie = global.signin();
   const title = "Valid Title";

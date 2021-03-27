@@ -22,5 +22,5 @@ export interface TicketDoc extends mongoose.Document {
  * Describes the Ticket Model
  */
 export interface TicketModel extends mongoose.Model<TicketDoc> {
-  build(attrs: TicketAttrs): TicketDoc
+  build(attrs: TicketAttrs): TicketDoc;
 }

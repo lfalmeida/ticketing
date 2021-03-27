@@ -1,4 +1,5 @@
-import { TicketAttrs } from '../../interfaces';
+import { UserPayload, NotFoundError, NotAuthorizedError } from '@blackcoffee/common';
+import { TicketAttrs, TicketDoc } from '../../interfaces';
 import { Ticket } from '../../models/ticket';
 
 export default class TicketService {
@@ -15,4 +16,19 @@ export default class TicketService {
   static async findById(ticketId: string) {
     return await Ticket.findById(ticketId);
   }
+
+  static async update(ticketId: string, newData: Object, currentUser: UserPayload) {
+    const ticket = await Ticket.findById(ticketId);
+    if (!ticket) {
+      throw new NotFoundError();
+    }
+
+    if (ticket.userId !== currentUser.id) {
+      throw new NotAuthorizedError()
+    }
+
+    ticket.set(newData);
+    return await ticket.save();
+  }
+
 }
