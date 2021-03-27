@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { BadRequestError } from '@blackcoffee/common';
-import { UserDoc, UserPayload } from '../interfaces/user';
+import { BadRequestError, UserPayload } from '@blackcoffee/common';
+import { UserDoc } from '../interfaces/user';
 
 export class TokenService {
   static generate(user: UserDoc) {
