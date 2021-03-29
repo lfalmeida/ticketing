@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import { OrderStatus } from '@blackcoffee/common';
+import { Order } from './order';
 
 interface TicketAttrs {
   title: string;
