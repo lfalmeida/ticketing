@@ -17,8 +17,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -62,7 +60,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
- Application built as an exercise to learn more about microservices, scalability, and server side rendering.
+ A mini application built as an exercise to learn more about microservices, scalability, and server side rendering.
 
 ### Built With
 * [Node.js](https://nodejs.org/en/)
@@ -72,50 +70,6 @@
 * [SKAFFOLD](https://skaffold.dev)
 * [JEST](https://jestjs.io)
 * [mongoDB](https://www.mongodb.com/)
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-To get a local copy up and running follow these simple steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/lfalmeida/ticketing.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/lfalmeida/ticketing/issues) for a list of proposed features (and known issues).
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -140,18 +94,10 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@lf_alm](https://twitter.com/lf_alm) - lfalmeida@me.com
+Fernando Almeida - [@lf_alm](https://twitter.com/lf_alm) - lfalmeida@me.com
 
 Project Link: [https://github.com/lfalmeida/ticketing](https://github.com/lfalmeida/ticketing)
 
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
 
 
 
@@ -167,7 +113,5 @@ Project Link: [https://github.com/lfalmeida/ticketing](https://github.com/lfalme
 [stars-url]: https://github.com/lfalmeida/repo/stargazers
 [issues-shield]: https://img.shields.io/github/issues/lfalmeida/ticketing.svg?style=for-the-badge
 [issues-url]: https://github.com/lfalmeida/repo/issues
-[license-shield]: https://img.shields.io/github/license/lfalmeida/ticketing.svg?style=for-the-badge
-[license-url]: https://github.com/lfalmeida/repo/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/lfalmeida
+ 
+ 
