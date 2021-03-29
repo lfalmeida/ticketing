@@ -6,7 +6,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h3 align="center">ticketing</h3>
+  <h1 align="center">ticketing.dev</h1>
   <p align="center">
     POC of an application with a scalable event-based architecture and server side rendering with React.
     <br />
@@ -28,8 +28,6 @@
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
-
-
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
