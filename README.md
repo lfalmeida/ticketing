@@ -8,7 +8,7 @@
 <p align="center">
   <h1 align="center">ticketing.dev</h1>
   <p align="center">
-    POC of an application with a scalable event-based architecture and server side rendering with React.
+    POC of an application with a scalable event-based architecture and server side rendering.
     <br />
   </p>
 </p>
