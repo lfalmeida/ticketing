@@ -1,10 +1,12 @@
 import { UserPayload, NotFoundError, NotAuthorizedError } from '@blackcoffee/common';
-import { TicketAttrs, TicketDoc } from '../../interfaces';
+import { TicketAttrs } from '../../interfaces';
 import { Ticket } from '../../models/ticket';
 import { TicketCreatedPublisher } from '../../events/publishers/ticketCreatedPublisher';
+import { TicketUpdatedPublisher } from '../../events/publishers/ticketUpdatePublisher';
 import { natsWrapper } from '../../nats';
 
 export default class TicketService {
+
   static async create(attrs: TicketAttrs) {
     const ticket = Ticket.build(attrs);
     await ticket.save();
@@ -39,7 +41,17 @@ export default class TicketService {
     }
 
     ticket.set(newData);
-    return await ticket.save();
+    await ticket.save();
+
+    const client = natsWrapper.client;
+    new TicketUpdatedPublisher(client).publish({
+      id: ticket.id,
+      title: ticket.title,
+      price: ticket.price,
+      userId: ticket.userId
+    });
+
+    return ticket;
   }
 
 }
