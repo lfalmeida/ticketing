@@ -72,6 +72,8 @@ export class OrderService {
     });
     await order.save();
 
+    // TODO publish an event
+
     return order;
   }
 
