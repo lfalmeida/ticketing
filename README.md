@@ -1,31 +1,14 @@
-<!--
-*** To avoid retyping too much info. Do a search and replace for the following:
-*** lfalmeida, ticketing, lf_alm, lfalmeida@me.com, ticketing, project_description
--->
- 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <h3 align="center">ticketing</h3>
   <p align="center">
-    POC of an application scalable, event-based architecture with server side rendering with React.
+    POC of an application with a scalable event-based architecture and server side rendering with React.
     <br />
   </p>
 </p>
@@ -54,6 +37,7 @@
 
 ### Built With
 * [Node.js](https://nodejs.org/en/)
+* [Next.js](https://nextjs.org)
 * [TypeScript](https://www.typescriptlang.org)
 * [NATS Stream Server](https://nats.io)
 * [kubernetes](https://kubernetes.io)
@@ -87,11 +71,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Fernando Almeida - [@lf_alm](https://twitter.com/lf_alm) - lfalmeida@me.com
 
 Project Link: [https://github.com/lfalmeida/ticketing](https://github.com/lfalmeida/ticketing)
-
-
-
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
