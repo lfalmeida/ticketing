@@ -1,8 +1,7 @@
 import express, { Request, Response } from 'express';
 import validationRules from './validation';
-import { BadRequestError, NotFoundError, OrderStatus, requireAuth, validateRequest } from '@blackcoffee/common';
+import { requireAuth, validateRequest } from '@blackcoffee/common';
 import { OrderService } from '../../services/orders';
-import { Order } from '../../models/order';
 
 const router = express.Router();
 

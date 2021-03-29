@@ -22,6 +22,15 @@ export class OrderService {
   }
 
   /**
+   * Receives a orderId and returns a ticket if it is found
+   * @param orderId string
+   * @returns Promise
+   */
+  static async findOrderById(orderId: string) {
+    return await Order.findById(orderId).populate('ticket');
+  }
+
+  /**
    * Return true when there is a order to the ticket provided.
    * One ticket is reserved when there is a order for the ticket with
    * a status of OrderStatus.Created, OrderStatus.AwaitingPayment or OrderStatus.Complete
@@ -75,6 +84,12 @@ export class OrderService {
     // TODO publish an event
 
     return order;
+  }
+
+  static async getOrdersFromUserId(userId: string) {
+    const orders = await Order.find({ userId })
+      .populate('ticket');
+    return orders;
   }
 
 }

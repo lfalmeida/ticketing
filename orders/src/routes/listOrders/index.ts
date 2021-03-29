@@ -1,13 +1,12 @@
 import { requireAuth } from '@blackcoffee/common';
 import express, { Request, Response } from 'express';
-import { Order } from '../../models/order';
+import { OrderService } from '../../services/orders';
 
 const router = express.Router();
 
 router.get('/api/orders', requireAuth, async (req: Request, res: Response) => {
-  const orders = await Order.find({
-    userId: req.currentUser!.id
-  }).populate('ticket');
+  const userId = req.currentUser!.id;
+  const orders = await OrderService.getOrdersFromUserId(userId);
   res.send(orders);
 });
 

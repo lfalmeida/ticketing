@@ -1,7 +1,12 @@
-import { body } from 'express-validator';
+import mongoose from 'mongoose';
+import { body, param } from 'express-validator';
 
 const validationRules = [
-  body('ticketId').not().isEmpty().withMessage('Ticket ID must be provided.'),
+  param('orderId')
+    .not()
+    .isEmpty()
+    .custom((input: string) => mongoose.Types.ObjectId.isValid(input))
+    .withMessage('Order ID must be provided.'),
 ];
 
 export default validationRules;
