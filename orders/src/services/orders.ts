@@ -1,4 +1,4 @@
-import { BadRequestError, NotFoundError, OrderStatus } from "@blackcoffee/common";
+import { BadRequestError, NotAuthorizedError, NotFoundError, OrderStatus } from "@blackcoffee/common";
 import { Order } from "../models/order";
 import { Ticket, TicketDoc } from "../models/ticket";
 
@@ -86,10 +86,41 @@ export class OrderService {
     return order;
   }
 
+  /**
+   * Returns the orders for the given userId
+   * @param userId User Identifier
+   * @returns Orders
+   */
   static async getOrdersFromUserId(userId: string) {
     const orders = await Order.find({ userId })
       .populate('ticket');
     return orders;
   }
+
+  /**
+   * 
+   * @param orderId 
+   * @param currentUserId 
+   * @returns 
+   */
+  static async cancelOrder(orderId: string, currentUserId: string) {
+    const order = await this.findOrderById(orderId);
+
+    if (!order) {
+      throw new NotFoundError();
+    }
+
+    if (order.userId !== currentUserId) {
+      throw new NotAuthorizedError();
+    }
+
+    order.status = OrderStatus.Cancelled;
+    await order.save();
+
+    // TODO publish an event
+
+    return order.status === OrderStatus.Cancelled;
+  }
+
 
 }
