@@ -10,13 +10,7 @@ export class OrderCreatedListener extends BaseListener<IOrderCreatedEvent>{
   async onMessage(data: IOrderCreatedEvent['data'], msg: Message) {
     const delay = new Date(data.expiresAt).getTime() - new Date().getTime();
     console.log(`waiting this many milliseconds to process queue: ${delay}`);
-    await expirationQueue.add(
-      {
-        orderId: data.id
-      }, {
-      delay: 10000
-    });
-
+    await expirationQueue.add({ orderId: data.id }, { delay });
     msg.ack();
   }
 }
