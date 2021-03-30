@@ -25,6 +25,6 @@ spec:
             - name: NATS_CLUSTER_ID
               value: ticketing    
             - name: REDIS_HOST
-              value: 'http://expiration-redis-srv'            
+              value: 'expiration-redis-srv' 
 
             
