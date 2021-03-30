@@ -14,6 +14,7 @@ export default class TicketService {
     const client = natsWrapper.client;
     new TicketCreatedPublisher(client).publish({
       id: ticket.id,
+      version: ticket.version,
       title: ticket.title,
       price: ticket.price,
       userId: ticket.userId
@@ -46,6 +47,7 @@ export default class TicketService {
     const client = natsWrapper.client;
     new TicketUpdatedPublisher(client).publish({
       id: ticket.id,
+      version: ticket.version,
       title: ticket.title,
       price: ticket.price,
       userId: ticket.userId
