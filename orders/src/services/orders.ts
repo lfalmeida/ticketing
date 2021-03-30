@@ -86,11 +86,12 @@ export class OrderService {
     const client = natsWrapper.client;
     new OrderCreatedPublisher(client).publish({
       id: order.id,
+      version: order.version,
       status: order.status,
       userId: order.userId,
       ticket: {
         id: ticket.id,
-        price: ticket.price
+        price: ticket.price,
       },
       expiresAt: order.expiresAt.toISOString(),
     });
@@ -132,6 +133,7 @@ export class OrderService {
     // TODO publish an event
     new OrderCancelledPublisher(natsWrapper.client).publish({
       id: order.id,
+      version: order.version,
       ticket: {
         id: order.ticket.id
       }

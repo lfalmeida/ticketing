@@ -1,4 +1,5 @@
 import { OrderStatus } from '@blackcoffee/common';
+import mongoose from 'mongoose';
 import request from 'supertest';
 import { app } from '../../../app';
 import { Ticket } from '../../../models/ticket';
@@ -8,7 +9,7 @@ import { OrderService } from '../../../services/orders';
 it('marks an order as cancelled', async () => {
   // create a ticket
   const ticket = Ticket.build({
-    id: '1234',
+    id: new mongoose.Types.ObjectId().toHexString(),
     title: "Concert",
     price: 30
   });
@@ -39,7 +40,7 @@ it('marks an order as cancelled', async () => {
 it('emits a order cancelled event', async () => {
   // create a ticket
   const ticket = Ticket.build({
-    id: '1234',
+    id: new mongoose.Types.ObjectId().toHexString(),
     title: "Concert",
     price: 30
   });
