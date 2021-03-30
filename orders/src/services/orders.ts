@@ -1,7 +1,9 @@
 import { BadRequestError, NotAuthorizedError, NotFoundError, OrderStatus } from "@blackcoffee/common";
 import { Order } from "../models/order";
 import { Ticket, TicketDoc } from "../models/ticket";
-
+import { natsWrapper } from '../nats';
+import { OrderCreatedPublisher } from '../events/publishers/orderCreatedPublisher';
+import { OrderCancelledPublisher } from '../events/publishers/orderCancelledPublisher';
 /**
  * 
  */
@@ -81,7 +83,17 @@ export class OrderService {
     });
     await order.save();
 
-    // TODO publish an event
+    const client = natsWrapper.client;
+    new OrderCreatedPublisher(client).publish({
+      id: order.id,
+      status: order.status,
+      userId: order.userId,
+      ticket: {
+        id: ticket.id,
+        price: ticket.price
+      },
+      expiresAt: order.expiresAt.toISOString(),
+    });
 
     return order;
   }
@@ -118,6 +130,12 @@ export class OrderService {
     await order.save();
 
     // TODO publish an event
+    new OrderCancelledPublisher(natsWrapper.client).publish({
+      id: order.id,
+      ticket: {
+        id: order.ticket.id
+      }
+    })
 
     return order.status === OrderStatus.Cancelled;
   }
