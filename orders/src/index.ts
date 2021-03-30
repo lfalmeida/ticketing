@@ -1,6 +1,8 @@
 import { databaseConnection } from './database/connection';
 import { app } from './app';
 import { natsWrapper } from './nats';
+import { TicketCreatedListener } from './events/listeners/ticketCreatedListener';
+import { TicketUpdateListener } from './events/listeners/ticketUpdateListener';
 
 const start = async () => {
 
@@ -37,6 +39,9 @@ const start = async () => {
   process.on('SIGTERM', () => natsWrapper.client.close());
 
   await databaseConnection();
+
+  new TicketCreatedListener(natsWrapper.client).listen();
+  new TicketUpdateListener(natsWrapper.client).listen();
 
   app.listen(3000, () => {
     console.log('Listening on port 3000.');
