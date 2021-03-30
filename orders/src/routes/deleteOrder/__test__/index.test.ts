@@ -8,6 +8,7 @@ import { OrderService } from '../../../services/orders';
 it('marks an order as cancelled', async () => {
   // create a ticket
   const ticket = Ticket.build({
+    id: '1234',
     title: "Concert",
     price: 30
   });
@@ -38,6 +39,7 @@ it('marks an order as cancelled', async () => {
 it('emits a order cancelled event', async () => {
   // create a ticket
   const ticket = Ticket.build({
+    id: '1234',
     title: "Concert",
     price: 30
   });

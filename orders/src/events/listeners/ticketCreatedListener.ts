@@ -10,7 +10,9 @@ export class TicketCreatedListener extends BaseListener<ITicketCreatedEvent> {
   async onMessage(data: ITicketCreatedEvent['data'], msg: Message) {
     const { id, title, price } = data;
     const ticket = Ticket.build({
-      id, title, price
+      id,
+      title,
+      price
     });
     await ticket.save();
     msg.ack();
