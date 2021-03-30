@@ -14,6 +14,11 @@ export class ExpirationCompleteListener extends BaseListener<IExpirationComplete
       throw new Error('Order not found.');
     }
 
+    // checking if alredy complete before cancel
+    if (order.status === OrderStatus.Complete) {
+      return msg.ack();
+    }
+
     order.set({ status: OrderStatus.Cancelled });
     await order.save();
 
