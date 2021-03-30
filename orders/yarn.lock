@@ -289,10 +289,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@blackcoffee/common@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@blackcoffee/common/-/common-1.0.10.tgz#a4c3f479b3d71b1c4bc342f1c90d723f85cc22a4"
-  integrity sha512-AMHthf5xmRQaGo890JDXquFe9S4DJsN97z13mhp6WH4pIVXGqG4Pq8xgbv5O9CbYt8ITmaZEH/VDnxHiuQugzg==
+"@blackcoffee/common@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@blackcoffee/common/-/common-1.0.12.tgz#bb42b08a4abcd17135f566df6870887f87d8467f"
+  integrity sha512-uN/2AMDDj6/WymX1nw4mnM2sSASP/cfqchSFtu+R+dz2157LlpgCUHdIbok4/LTNRnXez+C/gYhLXvAlm178dw==
   dependencies:
     "@types/cookie-session" "^2.0.42"
     "@types/express" "^4.17.11"
