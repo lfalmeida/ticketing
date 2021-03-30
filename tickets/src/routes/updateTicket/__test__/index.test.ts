@@ -2,6 +2,7 @@ import request from 'supertest';
 import { app } from '../../../app';
 import mongoose from 'mongoose';
 import { natsWrapper } from '../../../nats';
+import { Ticket } from '../../../models/ticket';
 
 it('returns a 404 if the provided id does not exist', async () => {
   const id = new mongoose.Types.ObjectId().toHexString();
@@ -109,4 +110,28 @@ it('publishes an event', async () => {
       price: 30
     }).expect(200);
   expect(natsWrapper.client.publish).toHaveBeenCalled();
-})
+});
+
+it('rejects an update to a reserved ticket', async () => {
+  const cookie = global.signin();
+  const response = await request(app)
+    .post('/api/tickets')
+    .set('Cookie', cookie)
+    .send({
+      title: 'teste title',
+      price: 20
+    });
+
+  const ticketCreated = await Ticket.findById(response.body.id);
+  ticketCreated!.set({ orderId: mongoose.Types.ObjectId().toHexString() });
+  await ticketCreated!.save();
+
+  await request(app)
+    .put(`/api/tickets/${response.body.id}`)
+    .set('Cookie', cookie)
+    .send({
+      title: 'New Title',
+      price: 30
+    }).expect(400);
+
+});

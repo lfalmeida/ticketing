@@ -1,6 +1,8 @@
 import { databaseConnection } from './database/connection';
 import { app } from './app';
 import { natsWrapper } from './nats';
+import { OrderCreatedListener } from './events/listeners/orderCreatedListener';
+import { OrderCancelledListener } from './events/listeners/orderCanceledListener';
 
 const start = async () => {
 
@@ -24,6 +26,8 @@ const start = async () => {
     throw new Error('NATS_CLUSTER_ID must be defined')
   }
 
+  await databaseConnection();
+
   await natsWrapper.connect(
     process.env.NATS_CLUSTER_ID,
     process.env.NATS_CLIENT_ID,
@@ -36,7 +40,8 @@ const start = async () => {
   process.on('SIGINT', () => natsWrapper.client.close());
   process.on('SIGTERM', () => natsWrapper.client.close());
 
-  await databaseConnection();
+  new OrderCreatedListener(natsWrapper.client).listen();
+  new OrderCancelledListener(natsWrapper.client).listen();
 
   app.listen(3000, () => {
     console.log('Listening on port 3000.');

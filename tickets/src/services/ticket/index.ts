@@ -1,4 +1,4 @@
-import { UserPayload, NotFoundError, NotAuthorizedError } from '@blackcoffee/common';
+import { UserPayload, NotFoundError, NotAuthorizedError, BadRequestError } from '@blackcoffee/common';
 import { TicketAttrs } from '../../interfaces';
 import { Ticket } from '../../models/ticket';
 import { TicketCreatedPublisher } from '../../events/publishers/ticketCreatedPublisher';
@@ -39,6 +39,10 @@ export default class TicketService {
 
     if (ticket.userId !== currentUser.id) {
       throw new NotAuthorizedError()
+    }
+
+    if (ticket.orderId) {
+      throw new BadRequestError('Cannot edit a reserved ticket.');
     }
 
     ticket.set(newData);
