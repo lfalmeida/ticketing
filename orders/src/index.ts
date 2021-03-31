@@ -4,6 +4,7 @@ import { natsWrapper } from './nats';
 import { TicketCreatedListener } from './events/listeners/ticketCreatedListener';
 import { TicketUpdatedListener } from './events/listeners/ticketUpdatedListener';
 import { ExpirationCompleteListener } from './events/listeners/expirationCompleteListener';
+import { PaymentCreatedListener } from './events/listeners/paymentCreatedListener';
 
 const start = async () => {
 
@@ -44,6 +45,7 @@ const start = async () => {
   new TicketCreatedListener(natsWrapper.client).listen();
   new TicketUpdatedListener(natsWrapper.client).listen();
   new ExpirationCompleteListener(natsWrapper.client).listen();
+  new PaymentCreatedListener(natsWrapper.client).listen();
 
   app.listen(3000, () => {
     console.log('Listening on port 3000.');
