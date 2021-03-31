@@ -1,6 +1,6 @@
 import { OrderStatus } from '@blackcoffee/common';
 import mongoose from 'mongoose';
-import updateIfCurrentPlugin from 'mongoose-update-if-current';
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 
 interface OrderAttrs {
   id: string,
@@ -19,6 +19,7 @@ interface OrderDoc extends mongoose.Document {
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
   build(attrs: OrderAttrs): OrderDoc;
+  findByEvent(event: { id: string, version: number }): Promise<OrderDoc | null>;
 }
 
 const orderSchema = new mongoose.Schema({
@@ -57,4 +58,13 @@ orderSchema.statics.build = (attrs: OrderAttrs) => {
   });
 };
 
+orderSchema.statics.findByEvent = (data: { id: string, version: number }) => {
+  return Order.findOne({
+    _id: data.id,
+    version: data.version - 1
+  });
+};
+
 const Order = mongoose.model<OrderDoc, OrderModel>('Order', orderSchema);
+
+export { Order };

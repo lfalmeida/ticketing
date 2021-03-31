@@ -1,6 +1,8 @@
 import { databaseConnection } from './database/connection';
 import { app } from './app';
 import { natsWrapper } from './nats';
+import { OrderCreatedListener } from './events/listeners/orderCreatedListener';
+import { OrderCancelledListener } from './events/listeners/orderCancelledListener';
 
 const start = async () => {
 
@@ -37,6 +39,10 @@ const start = async () => {
   });
   process.on('SIGINT', () => natsWrapper.client.close());
   process.on('SIGTERM', () => natsWrapper.client.close());
+
+  new OrderCreatedListener(natsWrapper.client).listen();
+  new OrderCancelledListener(natsWrapper.client).listen();
+
 
   app.listen(3000, () => {
     console.log('Listening on port 3000.');
