@@ -1,4 +1,4 @@
-name: test-auth
+name: test-orders
 
 on:
   pull_request:

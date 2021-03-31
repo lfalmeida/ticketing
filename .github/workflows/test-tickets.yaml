@@ -1,4 +1,4 @@
-name: test-auth
+name: test-tickets
 
 on:
   pull_request:
