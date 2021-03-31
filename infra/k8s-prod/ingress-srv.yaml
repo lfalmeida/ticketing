@@ -8,7 +8,7 @@ metadata:
     
 spec:
   rules:
-    - host: clusterapp.tk
+    - host: www.clusterapp.tk
       http:
         paths:
           - path: /api/users/?(.*)    
