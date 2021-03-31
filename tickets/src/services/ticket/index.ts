@@ -27,6 +27,10 @@ export default class TicketService {
     return await Ticket.find();
   }
 
+  static async getAllAvailable() {
+    return await Ticket.find({ orderId: undefined });
+  }
+
   static async findById(ticketId: string) {
     return await Ticket.findById(ticketId);
   }
