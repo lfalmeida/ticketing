@@ -2,7 +2,7 @@ import { databaseConnection } from './database/connection';
 import { app } from './app';
 
 const start = async () => {
-  console.log('Auth service staring up...');
+
   if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defined.')
   }

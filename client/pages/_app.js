@@ -37,8 +37,6 @@ AppComponent.getInitialProps = async appContext => {
   }
 
   return { pageProps };
-
-
 };
 
 export default AppComponent;
