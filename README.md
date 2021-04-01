@@ -1,7 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-![example branch parameter](https://github.com/lfalmeida/ticketing/actions/workflows/deploy-manifest.yaml/badge.svg?branch=master) 
 
 <!-- PROJECT LOGO -->
 <br />
