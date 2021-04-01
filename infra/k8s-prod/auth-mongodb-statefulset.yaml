@@ -38,16 +38,16 @@ spec:
           ports:
             - containerPort: 27017
           volumeMounts:
-            - name: auth-mongodb-persistent-storage-claim
+            - name: auth-mongodb-pvc
               mountPath: /data/db
   volumeClaimTemplates:
   - metadata:
-      name: auth-mongodb-persistent-storage-claim
+      name: auth-mongodb-pvc
       annotations:
         volume.beta.kubernetes.io/storage-class: "standard"
     spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 1Gi  
+          storage: 1Gi
       storageClassName: do-block-storage

@@ -3,13 +3,13 @@ kind: Service
 metadata:
   name: tickets-mongodb
   labels:
-    name: mongo
+    name: tickets-mongodb-service
 spec:
   ports:
   - port: 27017
     targetPort: 27017
   selector:
-    role: mongo
+    role: tickets-mongodb-service
 
 ---
 apiVersion: apps/v1
@@ -21,11 +21,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      role: mongo
+      role: tickets-mongodb-service
   template:
     metadata:
       labels:
-        role: mongo
+        role: tickets-mongodb-service
     spec:
       terminationGracePeriodSeconds: 10
       containers:
