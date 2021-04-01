@@ -1,7 +1,7 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+![example branch parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=master) 
 
 <!-- PROJECT LOGO -->
 <br />
