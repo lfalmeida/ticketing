@@ -17,7 +17,7 @@ spec:
           image: lfalmeida/auth
           env: 
             - name: MONGO_URI
-              value: 'mongodb://auth-mongo-srv:27017/auth'          
+              value: 'mongodb://auth-mongodb:27017/auth'          
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
