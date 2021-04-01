@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: payments-mongodb
+  labels:
+    name: payments-mongodb-service
+spec:
+  ports:
+  - port: 27017
+    targetPort: 27017
+  selector:
+    role: payments-mongodb-service
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb-payments-statefulset
+spec:
+  serviceName: payments-mongodb
+  replicas: 1
+  selector:
+    matchLabels:
+      role: payments-mongodb-service
+  template:
+    metadata:
+      labels:
+        role: payments-mongodb-service
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: mongodb-payments-container
+          image: mongo
+          resources:
+            requests:
+              cpu: 0.2
+              memory: 200Mi
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: payments-mongodb-persistent-storage-claim
+              mountPath: /data/db
+  volumeClaimTemplates:
+  - metadata:
+      name: payments-mongodb-persistent-storage-claim
+      annotations:
+        volume.beta.kubernetes.io/storage-class: "standard"
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi    
