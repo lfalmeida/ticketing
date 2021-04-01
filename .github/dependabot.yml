@@ -1,0 +1,34 @@
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "yarn" 
+    directory: "/auth" 
+    schedule:
+      interval: "daily"
+      
+  - package-ecosystem: "yarn"
+    directory: "/client" 
+    schedule:
+      interval: "daily"      
+
+  - package-ecosystem: "yarn" 
+    directory: "/expiration" 
+    schedule:
+      interval: "daily"    
+      
+  - package-ecosystem: "yarn"
+    directory: "/orders" 
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "yarn"
+    directory: "/payments" 
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "yarn"
+    directory: "/tickets"
+    schedule:
+      interval: "daily"
+
