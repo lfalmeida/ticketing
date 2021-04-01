@@ -2,32 +2,32 @@
 
 version: 2
 updates:
-  - package-ecosystem: "yarn" 
+  - package-ecosystem: "npm" 
     directory: "/auth" 
     schedule:
       interval: "daily"
       
-  - package-ecosystem: "yarn"
+  - package-ecosystem: "npm"
     directory: "/client" 
     schedule:
       interval: "daily"      
 
-  - package-ecosystem: "yarn" 
+  - package-ecosystem: "npm" 
     directory: "/expiration" 
     schedule:
       interval: "daily"    
       
-  - package-ecosystem: "yarn"
+  - package-ecosystem: "npm"
     directory: "/orders" 
     schedule:
       interval: "daily"
 
-  - package-ecosystem: "yarn"
+  - package-ecosystem: "npm"
     directory: "/payments" 
     schedule:
       interval: "daily"
 
-  - package-ecosystem: "yarn"
+  - package-ecosystem: "npm"
     directory: "/tickets"
     schedule:
       interval: "daily"
