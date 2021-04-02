@@ -15,6 +15,12 @@ spec:
       containers:
         - name: client    
           image: lfalmeida/client
+          env: 
+            - name: BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: app-configmap
+                  key: BASE_URL
 ---
 apiVersion: v1
 kind: Service

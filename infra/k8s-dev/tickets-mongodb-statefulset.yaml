@@ -3,50 +3,49 @@ kind: Service
 metadata:
   name: tickets-mongodb
   labels:
-    name: tickets-mongodb-service
+    app: tickets-mongodb
 spec:
   ports:
   - port: 27017
-    targetPort: 27017
+    name: mongo
+  clusterIP: None
   selector:
-    role: tickets-mongodb-service
-
+    app: tickets-mongodb
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mongodb-tickets-statefulset
+  name: tickets-db-set
 spec:
-  serviceName: tickets-mongodb
-  replicas: 1
   selector:
     matchLabels:
-      role: tickets-mongodb-service
+      app: tickets-mongodb
+  serviceName: "tickets-mongodb"
+  replicas: 1
   template:
     metadata:
       labels:
-        role: tickets-mongodb-service
+        app: tickets-mongodb
     spec:
-      terminationGracePeriodSeconds: 10
       containers:
-        - name: mongodb-tickets-container
-          image: mongo
-          resources:
-            requests:
-              cpu: 0.2
-              memory: 200Mi
-          ports:
-            - containerPort: 27017
-          volumeMounts:
-            - name: tickets-mongodb-persistent-storage-claim
-              mountPath: /data/db
+      - name: tickets-mongodb
+        image: mongo
+        resources:
+          requests:
+            cpu: 0.2
+            memory: 200Mi 
+        ports:
+          - containerPort: 27017                   
+        volumeMounts:
+        - mountPath: "/data/db"
+          name: tickets-pvc
   volumeClaimTemplates:
   - metadata:
-      name: tickets-mongodb-persistent-storage-claim
-      annotations:
-        volume.beta.kubernetes.io/storage-class: "standard"
+      name: tickets-pvc
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes:
+      - ReadWriteOnce
       resources:
         requests:
-          storage: 1Gi    
+          storage: 1Gi
+      storageClassName: "standard"

@@ -1,34 +1,34 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: orders-mongodb
+  name: auth-mongodb
   labels:
-    app: orders-mongodb
+    app: auth-mongodb
 spec:
   ports:
   - port: 27017
     name: mongo
   clusterIP: None
   selector:
-    app: orders-mongodb
+    app: auth-mongodb
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: orders-db-set
+  name: auth-db-set
 spec:
   selector:
     matchLabels:
-      app: orders-mongodb
-  serviceName: "orders-mongodb"
+      app: auth-mongodb
+  serviceName: "auth-mongodb"
   replicas: 1
   template:
     metadata:
       labels:
-        app: orders-mongodb
+        app: auth-mongodb
     spec:
       containers:
-      - name: orders-mongodb
+      - name: auth-mongodb
         image: mongo
         resources:
           requests:
@@ -38,14 +38,15 @@ spec:
           - containerPort: 27017                   
         volumeMounts:
         - mountPath: "/data/db"
-          name: orders-pvc
+          name: auth-pvc
   volumeClaimTemplates:
   - metadata:
-      name: orders-pvc
+      name: auth-pvc
     spec:
       accessModes:
       - ReadWriteOnce
       resources:
         requests:
           storage: 1Gi
-      storageClassName: "standard"
+      storageClassName: do-block-storage
+

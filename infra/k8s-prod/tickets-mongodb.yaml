@@ -1,34 +1,34 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: orders-mongodb
+  name: tickets-mongodb
   labels:
-    app: orders-mongodb
+    app: tickets-mongodb
 spec:
   ports:
   - port: 27017
     name: mongo
   clusterIP: None
   selector:
-    app: orders-mongodb
+    app: tickets-mongodb
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: orders-db-set
+  name: tickets-db-set
 spec:
   selector:
     matchLabels:
-      app: orders-mongodb
-  serviceName: "orders-mongodb"
+      app: tickets-mongodb
+  serviceName: "tickets-mongodb"
   replicas: 1
   template:
     metadata:
       labels:
-        app: orders-mongodb
+        app: tickets-mongodb
     spec:
       containers:
-      - name: orders-mongodb
+      - name: tickets-mongodb
         image: mongo
         resources:
           requests:
@@ -38,14 +38,14 @@ spec:
           - containerPort: 27017                   
         volumeMounts:
         - mountPath: "/data/db"
-          name: orders-pvc
+          name: tickets-pvc
   volumeClaimTemplates:
   - metadata:
-      name: orders-pvc
+      name: tickets-pvc
     spec:
       accessModes:
       - ReadWriteOnce
       resources:
         requests:
           storage: 1Gi
-      storageClassName: "standard"
+      storageClassName: do-block-storage

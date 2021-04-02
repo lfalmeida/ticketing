@@ -3,50 +3,49 @@ kind: Service
 metadata:
   name: payments-mongodb
   labels:
-    name: payments-mongodb-service
+    app: payments-mongodb
 spec:
   ports:
   - port: 27017
-    targetPort: 27017
+    name: mongo
+  clusterIP: None
   selector:
-    role: payments-mongodb-service
-
+    app: payments-mongodb
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mongodb-payments-statefulset
+  name: payments-db-set
 spec:
-  serviceName: payments-mongodb
-  replicas: 1
   selector:
     matchLabels:
-      role: payments-mongodb-service
+      app: payments-mongodb
+  serviceName: "payments-mongodb"
+  replicas: 1
   template:
     metadata:
       labels:
-        role: payments-mongodb-service
+        app: payments-mongodb
     spec:
-      terminationGracePeriodSeconds: 10
       containers:
-        - name: mongodb-payments-container
-          image: mongo
-          resources:
-            requests:
-              cpu: 0.2
-              memory: 200Mi
-          ports:
-            - containerPort: 27017
-          volumeMounts:
-            - name: payments-mongodb-persistent-storage-claim
-              mountPath: /data/db
+      - name: payments-mongodb
+        image: mongo
+        resources:
+          requests:
+            cpu: 0.2
+            memory: 200Mi 
+        ports:
+          - containerPort: 27017                   
+        volumeMounts:
+        - mountPath: "/data/db"
+          name: payments-pvc
   volumeClaimTemplates:
   - metadata:
-      name: payments-mongodb-persistent-storage-claim
-      annotations:
-        volume.beta.kubernetes.io/storage-class: "standard"
+      name: payments-pvc
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes:
+      - ReadWriteOnce
       resources:
         requests:
-          storage: 1Gi    
+          storage: 1Gi
+      storageClassName: "standard"
