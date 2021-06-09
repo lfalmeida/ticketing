@@ -18,7 +18,7 @@
   "dependencies": {
     "@blackcoffee/common": "^1.0.16",
     "@types/bull": "^3.15.1",
-    "bull": "^3.22.4",
+    "bull": "^3.22.8",
     "node-nats-streaming": "^0.3.2",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.4"
