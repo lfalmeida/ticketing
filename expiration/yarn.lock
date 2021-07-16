@@ -1056,15 +1056,15 @@ buffer-from@1.x, buffer-from@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
   integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
 
-bull@^3.22.4:
-  version "3.22.4"
-  resolved "https://registry.yarnpkg.com/bull/-/bull-3.22.4.tgz#1bda418d2aebdf892413d0c45d75c8ea5e0fc984"
-  integrity sha512-CV78TuSKyDj3SuZvySTOFXqZBtHxebhctLTq2Ff9Jrn51XOaxkEDioIDzq2LIUKEhTW8l3rFK5bIWNwweY0LXQ==
+bull@^3.25.0:
+  version "3.25.0"
+  resolved "https://registry.yarnpkg.com/bull/-/bull-3.25.0.tgz#d80e690e7bed84016fc4f83633c5dcac0255032a"
+  integrity sha512-11g4x/1skDW5gt0AE/7hOQ+Hhyfo29CPymO9yGvgGrEa5WlTY9nvmJdRE4XfGMj2dgUNuTTQuNJYrTzyiOiyLg==
   dependencies:
     cron-parser "^2.13.0"
     debuglog "^1.0.0"
     get-port "^5.1.1"
-    ioredis "^4.22.0"
+    ioredis "^4.27.0"
     lodash "^4.17.21"
     p-timeout "^3.2.0"
     promise.prototype.finally "^3.1.2"
@@ -2226,10 +2226,10 @@ inherits@2.0.3:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
-ioredis@^4.22.0:
-  version "4.24.5"
-  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.24.5.tgz#32f56ccb04d2e9ff00aa935caf348fd4e19867b0"
-  integrity sha512-a1uk8WXM4Xe9bfYUJH17Up9ODEASjYCWiD/BKojPHp5YDDMX/QBOWxgSmrtpRE+ARdLYUoXSLeyGZyegLdHcOg==
+ioredis@^4.27.0:
+  version "4.27.6"
+  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.27.6.tgz#a53d427d3fe75fbd10ed7ad150ce00559df8dcf8"
+  integrity sha512-6W3ZHMbpCa8ByMyC1LJGOi7P2WiOKP9B3resoZOVLDhi+6dDBOW+KNsRq3yI36Hmnb2sifCxHX+YSarTeXh48A==
   dependencies:
     cluster-key-slot "^1.1.0"
     debug "^4.3.1"
