@@ -1785,10 +1785,10 @@ express-async-errors@^3.1.1:
   resolved "https://registry.yarnpkg.com/express-async-errors/-/express-async-errors-3.1.1.tgz#6053236d61d21ddef4892d6bd1d736889fc9da41"
   integrity sha512-h6aK1da4tpqWSbyCa3FxB/V6Ehd4EEB15zyQq9qe75OZBp0krinNKuH4rAY+S/U/2I36vdLAUFSjQJ+TFmODng==
 
-express-validator@^6.10.0, express-validator@^6.10.1:
-  version "6.10.1"
-  resolved "https://registry.yarnpkg.com/express-validator/-/express-validator-6.10.1.tgz#0ec71a2e472d85158fede76f0199054034b06e7c"
-  integrity sha512-joYSJdkUyKMZ2gAUvyQNmqJ7x1vhrC/IHCKWauhKfoXNF83j65KnlqEEXXynBnJRd0QrNZ/aXw9uIhS6ptG0Cg==
+express-validator@^6.10.0, express-validator@^6.12.2:
+  version "6.12.2"
+  resolved "https://registry.yarnpkg.com/express-validator/-/express-validator-6.12.2.tgz#0ee3e34338223ae6ed9a97532ff3687fd561db90"
+  integrity sha512-UMVck7ZWrKH7eX75CRYk/pAc9jxZk8Ddsdkukw1R7LTWuQNiDaooz6nVfIdg33qZUHCuv2m2o+RS4pTMaLjGmA==
   dependencies:
     lodash "^4.17.21"
     validator "^13.5.2"
